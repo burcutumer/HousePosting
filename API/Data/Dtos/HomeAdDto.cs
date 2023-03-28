@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Data.Entities
+namespace API.Data.Dtos
 {
-    [Table("HomeAds")]
-    public class HomeAd
+    public class HomeAdDto
     {
         public int Id { get; set; }
         public bool IsRented { get; set; }
@@ -21,7 +19,6 @@ namespace API.Data.Entities
         public double MapCoordinates { get; set; }
         public int Price { get; set; }
         public DateTime CreatedAt { get; set; }
-        public int  AppUserId { get; set; }
-        public AppUser AppUser { get; set; } = null!;
+        public UserDto UserDto { get; set; } = null!;
     }
 }

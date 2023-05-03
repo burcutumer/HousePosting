@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace API.Data.Dtos
 {
-    public class HomeAdDto
+    public class CreateHomeAdDto
     {
-        public int Id { get; set; }
         public bool IsRented { get; set; }
         public string Location { get; set; } = null!;
         public int SquareMeters { get; set; }
@@ -19,6 +18,5 @@ namespace API.Data.Dtos
         public double MapCoordinates { get; set; }
         public int Price { get; set; }
         public DateTime CreatedAt { get; set; }
-        public HomeAdUserDto HomeAdUserDto { get; set; } = null!;
     }
 }

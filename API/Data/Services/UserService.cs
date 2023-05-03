@@ -81,7 +81,6 @@ namespace API.Data.Services
         public async Task<Response<UserDto>> GetUserByIdAsync(int userId)
         {
             var user = await _context.Users
-            .Include(a => a.HomeAds)
             .FirstOrDefaultAsync(p => p.Id == userId);
 
             if (user == null)
@@ -142,22 +141,7 @@ namespace API.Data.Services
             {
                 Id = appUser.Id,
                 FullName = appUser.FullName,
-                Email = appUser.Email,
-                HomeAds = appUser.HomeAds.Select(a => new HomeAdDto
-                {
-                    Id = a.Id,
-                    IsRented = a.IsRented,
-                    Location = a.Location,
-                    SquareMeters = a.SquareMeters,
-                    NumberOfRooms = a.NumberOfRooms,
-                    FloorNumber = a.FloorNumber,
-                    Heating = a.Heating,
-                    Balcony = a.Balcony,
-                    MapCoordinates = a.MapCoordinates,
-                    Price = a.Price,
-                    CreatedAt = a.CreatedAt,
-                    PhotoUrl = a.PhotoUrl
-                }).ToList()
+                Email = appUser.Email
             };
         }
     }

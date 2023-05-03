@@ -6,10 +6,12 @@ using API.Data.Dtos;
 using API.Data.Entities;
 using API.Data.Services;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class UserController : BaseApiController
     {
         private readonly IUserService _userService;
@@ -29,6 +31,7 @@ namespace API.Controllers
             return BadRequest(result);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<Response<UserDto>>> CreateUser([FromBody] CreateUserDto user)
         {
